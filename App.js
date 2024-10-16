@@ -24,6 +24,8 @@ export default function App() {
     }
 
     try {
+      setHeaderText("Scanning text... Analyzing ingredients...");
+
       const isJainResponse = await fetch(
         "https://jain-server.vercel.app/isjain",
         {
@@ -54,16 +56,14 @@ export default function App() {
   };
 
   const processResponse = (responseText) => {
-    const parts = responseText.split(".");
-
-    const firstSentence = parts[0].trim();
+    const firstSentence = responseText.trim().substring(0, 2);
     setHeaderText(
       firstSentence === "YES"
         ? "This is Jain-friendly!"
         : "This may not be Jain-friendly",
     );
 
-    const explanation = parts.length > 1 ? parts.slice(1).join(".").trim() : "";
+    const explanation = responseText;
     setResponseText(explanation);
   };
 
@@ -89,6 +89,9 @@ export default function App() {
 
       if (!result.canceled) {
         await saveImage(result.assets[0].uri, result.assets[0].base64);
+        setHeaderText(
+          "The image is scanned! Press 'Check Ingredients' to continue.",
+        );
       }
     } catch (error) {
       alert("Error uploading image: " + error.message);
@@ -124,7 +127,7 @@ export default function App() {
       {/*View for the Results*/}
       <View style={styles.results}>
         <TouchableOpacity onPress={checkIngredients} style={styles.button}>
-          <Text style={styles.textPicker}>Check ingredients</Text>
+          <Text style={styles.textPicker}>Check Ingredients</Text>
         </TouchableOpacity>
 
         <Text style={styles.textResultHead}>{headerText}</Text>
