@@ -17,8 +17,7 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.jainscan.jainscan",
-      "buildNumber": "1.0.0"
+      "bundleIdentifier": "com.jainscan.jainscan"
     },
     "extra": {
       "eas": {
