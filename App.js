@@ -100,7 +100,6 @@ export default function App() {
       //update displayed image
       setImage(uri);
       setCompressed("data:image/jpeg;base64," + compressed);
-      //console.log(compressed);
     } catch (error) {
       throw error;
     }
@@ -204,4 +203,3 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
 });
-
