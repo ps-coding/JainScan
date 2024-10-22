@@ -70,7 +70,9 @@ export default function App() {
   const checkPermissions = async () => {
     const { status } = await ImagePicker.requestCameraPermissionsAsync();
     if (status !== "granted") {
-      alert("Sorry, we need camera permissions to make this work!");
+      alert(
+        "Sorry, we need camera permissions in order to scan the food ingredients! The app will not work without camera permissions.",
+      );
       return false;
     }
     return true;
